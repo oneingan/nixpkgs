@@ -7,7 +7,7 @@
 , libsigsegv
 , lmdb
 , zlib
-, stdenv
+, gcc10Stdenv
 }: let
 
   urbit-src = fetchFromGitHub {
@@ -19,8 +19,11 @@
 
   callPackage = lib.callPackageWith ( pkgs // urbitPackages);
 
-  urbitPackages = {
+  stdenv = gcc10Stdenv;
 
+  urbitPackages = {
+    inherit stdenv;
+    
     fetchGitHubLFS = callPackage ./fetch-github-lfs.nix {};
 
     ca-bundle = callPackage ./ca-bundle.nix {};
