@@ -64,8 +64,7 @@ in stdenv.mkDerivation {
 
   dontDisableStatic = false;
 
-  # CFLAGS = oFlags ++ [ "-Werror" ];
-  CFLAGS = oFlags ++ [ "" ];
+  CFLAGS = oFlags ++ [ "-Werror" ];
 
   MEMORY_DEBUG = false;
   CPU_DEBUG = false;
@@ -74,6 +73,9 @@ in stdenv.mkDerivation {
   enableParallelBuilding = true;
   doCheck = true;
 
+  prePatch = ''
+    echo "1.15" > version
+  '';
   # Ensure any `/usr/bin/env bash` shebang is patched.
   postPatch = ''
     patchShebangs ./configure

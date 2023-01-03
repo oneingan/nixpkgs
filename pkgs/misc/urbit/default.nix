@@ -13,8 +13,13 @@
   urbit-src = fetchFromGitHub {
     owner = "urbit";
     repo = "urbit";
-    rev = "urbit-v1.15";
-    hash = "sha256-YHl4aPJglUIQ6mrLWSUU7gNJn9DjeCwNBCCUkDfX2iw=";
+    rev = "21f70231981eab8ed8250254c507dc99b330d857";
+    hash = "sha256-jxQXpuGKq4xZtLmZxfrdDZiA9MlbA6T7H7rvRyU/yjA=";
+    
+    # the repository's .gitattributes file uses "export-ignore" so
+    # some directories are not included in the tarball downloaded by
+    # fetchzip.
+    forceFetchGit = true;
   };
 
   callPackage = lib.callPackageWith ( pkgs // urbitPackages);
