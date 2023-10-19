@@ -7,7 +7,7 @@ let
     lib.filterAttrsRecursive (_: v: v != null) cfg.settings
   );
 
-  zoneType = lib.types.submodule ({ config, ... }: {
+  zoneType = lib.types.submodule ({
     freeformType = toml.type;
     options = with lib; {
       zone = mkOption {
