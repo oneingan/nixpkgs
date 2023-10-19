@@ -8,7 +8,7 @@ let
   );
 
   zoneType = lib.types.submodule ({ config, ... }: {
-    freeform = toml.type;
+    freeformType = toml.type;
     options = with lib; {
       zone = mkOption {
         type = types.str;
