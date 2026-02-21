@@ -11,13 +11,13 @@
   bubblewrap,
   curl,
   dune,
-  ffmpeg_6-full,
+  ffmpeg_8-full,
   yt-dlp,
   runtimePackages ? [
     awscli2
     bubblewrap
     curl
-    ffmpeg_6-full
+    ffmpeg_8-full
     yt-dlp
   ],
 }:
