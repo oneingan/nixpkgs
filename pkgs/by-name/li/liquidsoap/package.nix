@@ -110,6 +110,7 @@ stdenv.mkDerivation (finalAttrs: {
 
     # Recommended dependencies
     ocamlPackages.ffmpeg
+    ocamlPackages.domain_shims
 
     # Optional dependencies
     ocamlPackages.alsa
