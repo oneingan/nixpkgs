@@ -26,13 +26,13 @@ let
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "liquidsoap";
-  version = "2.4.4";
+  version = "2.5.0-unstable-2026-05-01";
 
   src = fetchFromGitHub {
     owner = "savonet";
     repo = "liquidsoap";
-    tag = "v${finalAttrs.version}";
-    hash = "sha256-uRqYyxLF6PuSDvbL77qn2PvttqqM9S00BjcaKUFxlQw=";
+    rev = "ed18e9c26742adfb7aa06bb1b4be4c5729d8836c";
+    hash = "sha256-4W4jcMIglOKzy9JnyajBRKthzfF/0mUBET1eiCqYeYk=";
   };
 
   postPatch = ''
@@ -48,7 +48,7 @@ stdenv.mkDerivation (finalAttrs: {
   buildPhase = ''
     runHook preBuild
 
-    dune build --release @install
+    dune build
 
     runHook postBuild
   '';
@@ -87,7 +87,6 @@ stdenv.mkDerivation (finalAttrs: {
     libjpeg
 
     # Mandatory dependencies
-    ocamlPackages.domain_shims
     ocamlPackages.dtools
     ocamlPackages.duppy
     ocamlPackages.mm
@@ -111,6 +110,7 @@ stdenv.mkDerivation (finalAttrs: {
 
     # Recommended dependencies
     ocamlPackages.ffmpeg
+    ocamlPackages.domain_shims
 
     # Optional dependencies
     ocamlPackages.alsa
